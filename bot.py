@@ -16,6 +16,13 @@ config = {
   "databaseURL": "https://zapper-bot-default-rtdb.firebaseio.com/",
   "storageBucket": "zapper-bot.appspot.com" 
 }
+
+emojis = {
+
+    'upvote': '<:uv:817063775110299649>',
+    'downvote': '<:dv:817063797587574844>'
+}
+
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 intents = discord.Intents.all()
@@ -405,7 +412,7 @@ async def apostar(ctx, valor):
         else:
             ganhou = moedas_atuais + int(multiplicado)
             db.child("corsacoins").child(f"{ctx.guild.id}").child(f'{ctx.author.id}').child('moedas').set(ganhou)
-            await ctx.send(f'Parabéns, <@{ctx.author.id}>! Você ganhou ' + str(int(multiplicado)) + ' corsacoins!:uv::uv:\nFicando com ' + str(ganhou) + ' corsacoins')
+            await ctx.send(f'Parabéns, <@{ctx.author.id}>! Você ganhou ' + str(int(multiplicado)) + ' corsacoins!\nFicando com ' + str(ganhou) + ' corsacoins')
     elif decidido == 'subtrai':
         multiplicado = float(valor) * random.choice(valoresmenos)
         if multiplicado < 1:
@@ -421,7 +428,7 @@ async def apostar(ctx, valor):
                 palavra2 = " corsacoin"
             else:
                 palavra2 = " corsacoins"
-            await ctx.send(f'Oops <@{ctx.author.id}>, você perdeu ' + str(int(multiplicado)) + f' {palavra}:dv::dv:...\nFicando com ' + str(ganhou) + palavra2)
+            await ctx.send(f'Oops <@{ctx.author.id}>, você perdeu ' + str(int(multiplicado)) + f' {palavra}{emojis.downvote}...\nFicando com ' + str(ganhou) + palavra2)
     elif decidido == 'igual':
         await ctx.send(f'Não teve sorte nem azar, <@{ctx.author.id}>, ficou com a mesma quantidade de moedas =)\nContinua com ' + str(moedas_atuais) + ' corsacoins')
 
@@ -494,8 +501,9 @@ async def sobre(ctx, user: discord.Member):
 @bot.command(aliases=["t", 'a'])
 @commands.is_owner()
 async def teste(ctx):
-    await ctx.send('\:829343213785317396:')
-    await ctx.send('\829343213785317396')
+    await ctx.send(emojis.downvote)
+    await ctx.send(emojis['upvote'])
+    await ctx.send(emojis.get('upvote'))
 
 @commands.is_owner()
 @bot.command()
