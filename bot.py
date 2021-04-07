@@ -410,7 +410,7 @@ async def apostar(ctx, valor):
     elif decidido == 'subtrai':
         multiplicado = float(valor) * random.choice(valoresmenos)
         if multiplicado < 1:
-            await ctx.send(f'Não teve sorte nem azar, <@{ctx.author.id}>, ficou com a mesma quantidade de moedas =)\nContinua com ' + str(moedas_atuais) + ' corsacoins')
+            await ctx.send(f'Não teve sorte nem azar, <@{ctx.author.id}>, ficou com a mesma quantidade de moedas <:zap22:825381919335907358> \nContinua com ' + str(moedas_atuais) + ' corsacoins')
         else:
             ganhou = moedas_atuais - int(multiplicado)
             db.child("corsacoins").child(f"{ctx.guild.id}").child(f'{ctx.author.id}').child('moedas').set(ganhou)
