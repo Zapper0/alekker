@@ -43,7 +43,7 @@ def hora_atual():
 async def on_ready():
     global tempo_inicial
     tempo_inicial = hora_atual()
-    jogando = ['algum jogo :v', 'o corsa na parede', 'o zap longe', 'whatsapp 2']
+    jogando = ['whatsapp 2']
     os.system('cls' if os.name == 'nt' else 'clear')   
     await bot.change_presence(
         activity=discord.Activity(
@@ -51,9 +51,6 @@ async def on_ready():
             name=random.choice(jogando)
         )
     )
-    user = await bot.fetch_user(341209316663099394)
-    mensagem = await DMChannel.fetch_message(user, 798921161873948745)
-    await mensagem.edit(content="Bot ativo desde " + datetime.now().strftime("%d/%m, às %H:%M:%S"))
     print(f'tô online, loguei como {bot.user}')
 
 @bot.event
