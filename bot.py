@@ -229,9 +229,9 @@ async def adivinhar(ctx):
     ganhar = int(ganhar)
     autor = ctx.author
     if ganhar == 1:
-        palavra = " corsacoin"
+        palavra = " corsacoin<:zap22:825381919335907358> "
     else:
-        palavra = " corsacoins"
+        palavra = " corsacoins<:zap22:825381919335907358> "
     await ctx.send(f'Tente adivinhar o número em que eu estou pensando, <@{ctx.author.id}>, é entre 0 e {num2}, pra ganhar {ganhar} corsacoins.\n_não esquece de colocar \",\" antes do número_ =)')
     
     
@@ -245,9 +245,9 @@ async def adivinhar(ctx):
                 
                 if int(chute.content) == num:            
                     if ganhar == 1:
-                        palavra = " corsacoin"
+                        palavra = " corsacoin<:zap22:825381919335907358> "
                     else:
-                        palavra = " corsacoins"
+                        palavra = " corsacoins<:zap22:825381919335907358> "
                     await ctx.send(f'Parabéns <@{ctx.author.id}>, você acertou e ganhou {ganhar} {palavra}!')
                     db.child("corsacoins").child(f"{ctx.guild.id}").child(f'{ctx.author.id}').child('moedas').set(moedas_atuais + ganhar)
                     acertou = True
@@ -276,9 +276,9 @@ async def lootBox(ctx):
         possibilidades = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
         premio = random.choice(possibilidades)
         if premio == 1:
-            palavra = " corsacoin"
+            palavra = " corsacoin<:zap22:825381919335907358> "
         else:
-            palavra = " corsacoins"
+            palavra = " corsacoins<:zap22:825381919335907358> "
         await ctx.send("Você ganhou " + str(premio) + palavra)
         if moedas_atuais == None:
             db.child("corsacoins").child(f"{ctx.guild.id}").child(f'{ctx.author.id}').child('moedas').set(premio)
@@ -392,7 +392,7 @@ async def apostar(ctx, valor):
         try:
             valor = int(valor)
             if moedas_atuais == None or moedas_atuais < int(valor) or int(valor) <= 0:
-                await ctx.send('Ops, você não tem corsacoins suficientes para apostar.\nUse o comando .lb para ganhar corsacoins e poder apostar! :zap22:')
+                await ctx.send('Ops, você não tem corsacoins suficientes para apostar.\nUse o comando .lb para ganhar corsacoins e poder apostar! <:zap22:825381919335907358> ')
                 return
         except:
             await ctx.send('Passe os parâmetros adequadamente. Para essa função só números inteiros positivos são aceitos')
@@ -402,7 +402,7 @@ async def apostar(ctx, valor):
     if decidido == 'soma':
         multiplicado = float(valor) * random.choice(valoresmais)
         if multiplicado < 1:
-            await ctx.send(f'Não teve sorte nem azar, <@{ctx.author.id}>, ficou com a mesma quantidade de moedas =)\nContinua com ' + str(moedas_atuais) + ' corsacoins')
+            await ctx.send(f'Não teve sorte nem azar, <@{ctx.author.id}>, ficou com a mesma quantidade de moedas <:zap22:825381919335907358> \nContinua com ' + str(moedas_atuais) + ' corsacoins')
         else:
             ganhou = moedas_atuais + int(multiplicado)
             db.child("corsacoins").child(f"{ctx.guild.id}").child(f'{ctx.author.id}').child('moedas').set(ganhou)
@@ -415,13 +415,13 @@ async def apostar(ctx, valor):
             ganhou = moedas_atuais - int(multiplicado)
             db.child("corsacoins").child(f"{ctx.guild.id}").child(f'{ctx.author.id}').child('moedas').set(ganhou)
             if multiplicado == 1:
-                palavra = " corsacoin"
+                palavra = " corsacoin<:zap22:825381919335907358> "
             else:
-                palavra = " corsacoins"
+                palavra = " corsacoins<:zap22:825381919335907358> "
             if ganhou == 1:
-                palavra2 = " corsacoin"
+                palavra2 = " corsacoin<:zap22:825381919335907358> "
             else:
-                palavra2 = " corsacoins"
+                palavra2 = " corsacoins<:zap22:825381919335907358> "
             await ctx.send(f'Oops <@{ctx.author.id}>, você perdeu ' + str(int(multiplicado)) + f' {palavra}...\nFicando com ' + str(ganhou) + palavra2 + downvote)
     elif decidido == 'igual':
         await ctx.send(f'Não teve sorte nem azar, <@{ctx.author.id}>, ficou com a mesma quantidade de moedas =)\nContinua com ' + str(moedas_atuais) + ' corsacoins')
@@ -466,9 +466,9 @@ async def eu(ctx):
     embed.set_thumbnail(url=corsas[random.randint(0, 2)])
     embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
     if moedas_atuais == 1:
-        palavra = " corsacoin"
+        palavra = " corsacoin<:zap22:825381919335907358> "
     else:
-        palavra = " corsacoins"
+        palavra = " corsacoins<:zap22:825381919335907358> "
     embed.add_field(name= "Corsacoins", value=str(ctx.author.name) + " possui " + str(moedas_atuais) + palavra)
 
     await ctx.send(content="Aqui " + ctx.author.name + ", cuida bem dessa grana, hein!", embed=embed)
@@ -485,9 +485,9 @@ async def sobre(ctx, user: discord.Member):
     embed.set_thumbnail(url=corsas[random.randint(0, 2)])
     embed.set_author(name=user.name, icon_url=user.avatar_url)
     if moedas_atuais == 1:
-        palavra = " corsacoin"
+        palavra = " corsacoin<:zap22:825381919335907358> "
     else:
-        palavra = " corsacoins"
+        palavra = " corsacoins<:zap22:825381919335907358> "
     embed.add_field(name= "Corsacoins", value=str(user.name) + " possui " + str(moedas_atuais) + palavra)
 
     await ctx.send(content="Aqui <@" + str(ctx.author.id) + ">, as informações sobre " + user.name, embed=embed)
