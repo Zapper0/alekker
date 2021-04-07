@@ -391,7 +391,7 @@ async def apostar(ctx, valor):
         try:
             valor = int(valor)
             if moedas_atuais == None or moedas_atuais < int(valor) or int(valor) <= 0:
-                await ctx.send('Ops, você não tem corsacoins suficientes para apostar.\nUse o comando .lb para ganhar corsacoins e poder apostar!')
+                await ctx.send('Ops, você não tem corsacoins suficientes para apostar.\nUse o comando .lb para ganhar corsacoins e poder apostar! :zap22:')
                 return
         except:
             await ctx.send('Passe os parâmetros adequadamente. Para essa função só números inteiros positivos são aceitos')
@@ -405,7 +405,7 @@ async def apostar(ctx, valor):
         else:
             ganhou = moedas_atuais + int(multiplicado)
             db.child("corsacoins").child(f"{ctx.guild.id}").child(f'{ctx.author.id}').child('moedas').set(ganhou)
-            await ctx.send(f'Parabéns, <@{ctx.author.id}>! Você ganhou ' + str(int(multiplicado)) + ' corsacoins!\nFicando com ' + str(ganhou) + ' corsacoins')
+            await ctx.send(f'Parabéns, <@{ctx.author.id}>! Você ganhou ' + str(int(multiplicado)) + ' corsacoins!:uv::uv:\nFicando com ' + str(ganhou) + ' corsacoins')
     elif decidido == 'subtrai':
         multiplicado = float(valor) * random.choice(valoresmenos)
         if multiplicado < 1:
@@ -421,7 +421,7 @@ async def apostar(ctx, valor):
                 palavra2 = " corsacoin"
             else:
                 palavra2 = " corsacoins"
-            await ctx.send(f'Oops <@{ctx.author.id}>, você perdeu ' + str(int(multiplicado)) + f' {palavra}...\nFicando com ' + str(ganhou) + palavra2)
+            await ctx.send(f'Oops <@{ctx.author.id}>, você perdeu ' + str(int(multiplicado)) + f' {palavra}:dv::dv:...\nFicando com ' + str(ganhou) + palavra2)
     elif decidido == 'igual':
         await ctx.send(f'Não teve sorte nem azar, <@{ctx.author.id}>, ficou com a mesma quantidade de moedas =)\nContinua com ' + str(moedas_atuais) + ' corsacoins')
 
