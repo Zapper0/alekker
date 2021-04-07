@@ -8,6 +8,7 @@ from unicodedata import name, normalize
 from datetime import datetime
 import pyrebase
 import random
+import tokens
 
 config = {
   "apiKey": "AIzaSyDSNiMyZF_fdprDfs-HE3QI_eHAnnRTdFc",
@@ -511,4 +512,4 @@ async def atualizar(ctx, commit):
     quit()
 
 
-bot.run("ODI5MzI2NzU5ODE2MjAwMjE1.YG2guw.mnE9nVYEyxPJAca2AvlpuSGuFlU")
+bot.run(tokens.token)
