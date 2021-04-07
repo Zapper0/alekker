@@ -494,7 +494,7 @@ async def sobre(ctx, user: discord.Member):
 @bot.command(aliases=["t", 'a'])
 @commands.is_owner()
 async def teste(ctx):
-    ctx.send(':uv:')
+    await ctx.send(':uv:')
 
 @commands.is_owner()
 @bot.command()
