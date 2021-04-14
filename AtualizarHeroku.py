@@ -10,9 +10,7 @@ os.system('git add .')
 os.system('git commit -am ' + commit)
 os.system('git push heroku master')
 """
-heroku git:remote -a alekker
-git init
 git add .
-git commit -am "primeiro commit"
-git push heroku master
+git commit -am "Modificações no .rank e maior aleatoriedade na aposta"
+git push
 """

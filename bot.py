@@ -161,7 +161,7 @@ async def rank(ctx):
         else:
             moedas = rank.get(user).get('moedas')
             usuario = await bot.fetch_user(user)
-            embed.add_field(name= f"{cont + 1}º:   " + usuario.display_name, value= moedas, inline=False)
+            embed.add_field(name= f"{cont + 1}° -   `{usuario.display_name}`", value= moedas, inline=False)
             cont += 1
     await ctx.send(embed=embed)
 
@@ -366,7 +366,8 @@ async def apostar(ctx, valor):
             f' no server {ctx.guild}, no canal {ctx.channel}'
         )
     agora = (datetime.now()).strftime('%m %d %H %M').replace(' ', '')
-    decisao = ['soma', 'igual', 'subtrai']
+    decisao = ['soma', 'igual', 'subtrai', 'subtrai']
+    random.seed(int(agora))
     horaimunidade = db.child("corsacoins").child(f"{ctx.guild.id}").child(f'{ctx.author.id}').child("Ganhos aumentados").get().val()
     role = discord.utils.get(ctx.guild.roles, name='Ganhos aumentados')
     
@@ -379,7 +380,7 @@ async def apostar(ctx, valor):
         await ctx.author.remove_roles(role)
     
     if role in ctx.author.roles:
-        decisao = ['soma', 'soma', 'soma', 'igual', 'subtrai']
+        decisao = ['soma', 'soma', 'soma', 'igual', 'subtrai', 'subtrai']
         
     valoresmais = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0]
     valoresmenos = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
