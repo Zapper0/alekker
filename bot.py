@@ -161,7 +161,7 @@ async def rank(ctx):
         else:
             moedas = rank.get(user).get('moedas')
             usuario = await bot.fetch_user(user)
-            embed.add_field(name= f"{cont + 1}° -   `{usuario.display_name}`", value= moedas, inline=False)
+            embed.add_field(name= f"{cont + 1}° -   {usuario.display_name}", value= f"`{moedas}`", inline=False)
             cont += 1
     await ctx.send(embed=embed)
 
